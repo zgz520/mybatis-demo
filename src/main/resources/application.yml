@@ -1,3 +1,72 @@
+spring:
+  #数据源
+  datasource:
+    druid:
+      #基本JDBC连接
+      name: receiver
+      url: jdbc:mysql://192.168.20.214:3306/ry?useSSL=false&Unicode=true&characterEncoding=utf-8
+      username: root
+      password: admin
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      ##Druid
+      # 初始化大小，最小，最大
+      initial-size: 5
+      max-active: 10
+      min-idle: 5
+      # 配置获取连接等待超时的时间
+      max-wait: 60000
+      # 打开PSCache，并且指定每个连接上PSCache的大小
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      #max-open-prepared-statements:  #和上面的等价
+      validation-query: SELECT 1
+      validation-query-timeout: 60000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 100000
+      default-auto-commit: true
+      # 配置一个连接在池中最大生存的时间，单位是毫秒
+      #max-evictable-idle-time-millis:
+      filters: stat,wall,log4j2
+      # WebStatFilter配置，说明请参考Druid Wiki，配置_配置WebStatFilter
+      web-stat-filter:
+        enabled: true
+        url-pattern:  /*
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+        session-stat-enable: true
+        session-stat-max-count: 1000
+        principal-session-name:
+        principal-cookie-name:
+        profile-enable: true
+      # StatViewServlet配置，说明请参考Druid Wiki，配置_StatViewServlet配置
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: true
+        login-username: druid
+        login-password: druid
+        allow:
+        deny:
+      # 配置StatFilter
+      # 配置StatFilter
+      filter:
+        log4j2:
+          enabled: true
+          #statement-log-enabled: true
+          #connection-log-enabled: true
+          #statement-sql-pretty-format: true
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.zgz.mybatis.pojo
+  type-handlers-package: com.zgz.mybatis.type
+
+
 
 
 

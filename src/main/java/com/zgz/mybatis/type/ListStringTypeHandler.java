@@ -30,7 +30,7 @@ public class ListStringTypeHandler extends BaseTypeHandler<List<Integer>> {
 
     @Override
     public List<Integer> getNullableResult(ResultSet rs, String columnName) throws SQLException {
-        String ids = rs.getNString(columnName);
+        String ids = rs.getString(columnName);
         if (StringUtils.isEmpty(ids)) {
             return null;
         }
@@ -39,7 +39,7 @@ public class ListStringTypeHandler extends BaseTypeHandler<List<Integer>> {
 
     @Override
     public List<Integer> getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
-        String ids = rs.getNString(columnIndex);
+        String ids = rs.getString(columnIndex);
         if (StringUtils.isEmpty(ids)) {
             return null;
         }
