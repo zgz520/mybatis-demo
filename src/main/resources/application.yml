@@ -4,7 +4,7 @@ spring:
     druid:
       #基本JDBC连接
       name: receiver
-      url: jdbc:mysql://localhost:3306/test?useSSL=false&Unicode=true&characterEncoding=utf-8
+      url: jdbc:mysql://localhost:3306/zgz?useSSL=false&Unicode=true&characterEncoding=utf-8
       username: root
       password: admin
       driver-class-name: com.mysql.cj.jdbc.Driver
@@ -62,9 +62,8 @@ spring:
 
 
 mybatis:
+  config-location: classpath:mybatis-config.xml
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.zgz.mybatis.pojo
-  type-handlers-package: com.zgz.mybatis.type
 
 
 
